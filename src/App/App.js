@@ -1,4 +1,4 @@
-import './App.scss';
+import './styles/style.scss';
 import { Download } from '../widgets';
 import { useState, useEffect } from 'react';
 

@@ -41,12 +41,12 @@ export const Download = (props) => {
               />
             </a>
           </div>
-          <div className={`${className}__image-block`}>
-            <img className={`${className}__image`}
-              src={props.details.image.source}
-              alt={props.details.image.description}
-            />
-          </div>
+        </div>
+        <div className={ `${className}__image-block` }>
+          <img className={ `${className}__image` }
+            src={ props.details.image.source }
+            alt={ props.details.image.description }
+          />
         </div>
       </div>
     </section>

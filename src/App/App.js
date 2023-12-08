@@ -1,5 +1,5 @@
-import './styles/style.scss';
-import { Download } from '../widgets';
+import './styles/index.scss';
+import { Download } from 'widgets';
 import { useState, useEffect } from 'react';
 
 /**
@@ -26,7 +26,7 @@ export const App = () => {
   }, []);
 
   return (
-    <div className="App">
+    <div className="app">
       {downloadDetails && (
         <Download details={downloadDetails} />
       )}

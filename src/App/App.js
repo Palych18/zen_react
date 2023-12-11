@@ -1,6 +1,13 @@
 import './styles/index.scss';
-import { Download } from 'widgets';
-import { useState, useEffect } from 'react';
+import {
+  useState,
+  useEffect,
+} from 'react';
+
+import {
+  Download,
+  Warranty,
+} from 'widgets';
 
 /**
  * @function App
@@ -9,6 +16,7 @@ import { useState, useEffect } from 'react';
 
 export const App = () => {
   const [ downloadDetails, setDownloadDetails ] = useState(null);
+  const [ warrantyDetails, setWarrantyDetails ] = useState(null);
 
   useEffect(() => {
     (async () => {
@@ -16,8 +24,9 @@ export const App = () => {
         const response = await fetch('https://zen-npw-default-rtdb.firebaseio.com/.json');
         const data = await response.json();
         if (!data) throw new Error('No data!');
-        const { download } = data.en;
+        const { download, warranty } = data.en;
         setDownloadDetails(download);
+        setWarrantyDetails(warranty);
       } catch (error) {
         const /** @type {*} */ { message } = error;
         console.error(message);
@@ -27,9 +36,16 @@ export const App = () => {
 
   return (
     <div className="app">
-      {downloadDetails && (
-        <Download details={downloadDetails} />
-      )}
+      <div>
+        {downloadDetails && (
+          <Download details={downloadDetails} />
+        )}
+      </div>
+      <div>
+        {warrantyDetails && (
+          <Warranty details={warrantyDetails}/>
+        )}
+      </div>
     </div>
   );
 };

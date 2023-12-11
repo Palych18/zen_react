@@ -1,5 +1,4 @@
-import './Download.scss';
-import { getClassNames } from '../../shared/utils';
+import classes from './Download.module.scss';
 
 /**
  * @typedef {import('./types').DownloadProps} DownloadProps
@@ -13,27 +12,25 @@ import { getClassNames } from '../../shared/utils';
 
 export const Download = (props) => {
 
-  const className = getClassNames(props.details.name);
-
   return (
-    <section className={className}>
-      <div className={`${className}__wrapper`}>
-        <div className={`${className}__text-block`}>
-          <h1 className={`${className}__title`}>
+    <section className={classes.download}>
+      <div className={classes.wrapper}>
+        <div className={classes.textBlock}>
+          <h1 className={classes.title}>
             {props.details.title.content}
           </h1>
           {props.details.texts.map((text) => (
-            <p className={`${className}__copy`}>{text}</p>
+            <p className={classes.text}>{text}</p>
           ))}
-          <div className={`${className}__links`}>
-            <a className={`${className}__link`}
+          <div className={classes.links}>
+            <a className={classes.link}
               href={props.details.links.apple.url}
             >
               <img src={props.details.links.apple.icon}
                 alt="Apple"
               />
             </a>
-            <a className={`${className}__link`}
+            <a className={classes.link}
               href={props.details.links.google.url}
             >
               <img src={props.details.links.google.icon}
@@ -42,12 +39,10 @@ export const Download = (props) => {
             </a>
           </div>
         </div>
-        <div className={ `${className}__image-block` }>
-          <img className={ `${className}__image` }
-            src={ props.details.image.source }
-            alt={ props.details.image.description }
-          />
-        </div>
+        <img className={classes.image}
+          src={props.details.image.source}
+          alt={props.details.image.description}
+        />
       </div>
     </section>
   );

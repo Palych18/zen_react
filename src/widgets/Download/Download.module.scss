@@ -1,44 +1,39 @@
-$breakpoint-md: 768px;
-$breakpoint-lg: 1152px;
-$breakpoint-xl: 1440px;
-
-* {
-  font-size: 14px;
-  font-weight: 400;
-}
-
-img {
-  width: 100%;
-}
+@import '~shared/styles/breakpoints';
 
 .download {
-  padding: 60px 15px 0;
+  padding: 30px 15px;
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 40px 15px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    padding: 50px 15px;
+  }
 }
 
-.download__wrapper {
-  margin-top: 20px;
-
+.wrapper {
   @media (min-width: $breakpoint-md) {
     display: flex;
     gap: 30px;
     width: 690px;
-    margin: 30px auto 0;
+    margin: 0 auto;
   }
 
   @media (min-width: $breakpoint-lg) {
     gap: 40px;
     width: 930px;
-    margin: 40px auto 10px;
+    margin: 0 auto;
   }
 
   @media (min-width: $breakpoint-xl) {
     gap: 110px;
     width: 1110px;
-    margin: 50px auto 20px;
+    margin: 0 auto;
   }
 }
 
-.download__text-block {
+.textBlock {
   @media (min-width: $breakpoint-md) {
     display: flex;
     flex-direction: column;
@@ -47,7 +42,7 @@ img {
   }
 }
 
-.download__title {
+.title {
   font-size: 30px;
   font-weight: 700;
   line-height: 40px;
@@ -67,7 +62,7 @@ img {
   }
 }
 
-.download__copy {
+.text {
   margin-top: 10px;
   line-height: 20px;
 
@@ -87,7 +82,7 @@ img {
   }
 }
 
-.download__links {
+.links {
   margin-top: 20px;
 
   @media (min-width: $breakpoint-md) {
@@ -95,22 +90,22 @@ img {
   }
 }
 
-.download__link {
+.link {
   display: block;
   width: 150px;
   height: 44px;
-}
 
-.download__link:last-child {
-  margin-top: 15px;
+  &:last-child {
+    margin-top: 15px;
 
-  @media (min-width: $breakpoint-md) {
-    margin-top: 0;
-    margin-left: 20px;
+    @media (min-width: $breakpoint-md) {
+      margin-top: 0;
+      margin-left: 20px;
+    }
   }
 }
 
-.download__image {
+.image {
   margin-top: 30px;
   border: 1px solid #aaaaaa;
   border-radius: 20px;

@@ -1,0 +1,247 @@
+@import "~shared/styles/breakpoints";
+
+.header {
+  position: fixed;
+  padding: 10px;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1;
+  color: #000000;
+  background: #ffffff;
+  height: 50px;
+
+  @media (min-width: $breakpoint-lg) {
+    padding-top: 15px;
+    height: 80px;
+  }
+
+  &.dark {
+    color: #ffffff;
+    background: #484848;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    height: 50px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    border-bottom: 1px solid #aaaaaa;
+    z-index: 2;
+    background: inherit;
+    box-shadow: 0px 0px 15px;
+
+    @media (min-width: $breakpoint-lg) {
+      height: 80px;
+    }
+  }
+}
+
+.wrapper {
+  display: flex;
+  height: 30px;
+  align-items: center;
+  box-shadow: 0px 1px 0px #aaaaaa;
+  background: inherit;
+
+  @media (min-width: $breakpoint-md) {
+    width: 690px;
+    margin: 0 auto;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    width: 930px;
+    height: 50px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    width: 1110px;
+  }
+}
+
+.logo {
+  height: 30px;
+  width: 77px;
+  color: currentColor;
+  background: inherit;
+  z-index: 3;
+  cursor: pointer;
+  align-items: center;
+
+  @media (min-width: $breakpoint-lg) {
+    height: 40px;
+    width: 102px;
+  }
+}
+
+.nav {
+  background: inherit;
+
+  @media (min-width: $breakpoint-lg) {
+    margin-left: auto;
+  }
+}
+
+.actions {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  z-index: 3;
+}
+
+.theme {
+  margin-left: 20px;
+  width: 30px;
+  height: 30px;
+  background: inherit;
+  color: currentColor;
+  cursor: pointer;
+  align-items: center;
+
+  @media (min-width: $breakpoint-lg) {
+    margin-left: 40px;
+    width: 40px;
+    height: 40px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    margin-left: 50px;
+  }
+}
+
+.lang {
+  width: 50px;
+  height: 30px;
+  color: currentColor;
+  background: inherit;
+  border: 1px solid currentColor;
+  border-radius: 4px;
+  cursor: pointer;
+
+  @media (min-width: $breakpoint-lg) {
+    width: 60px;
+    height: 40px;
+  }
+}
+
+.burger {
+  margin-left: 20px;
+  height: 20px;
+  width: 30px;
+  position: relative;
+  background: inherit;
+  color: currentColor;
+  cursor: pointer;
+
+  @media (min-width: $breakpoint-lg) {
+    display: none;
+  }
+
+  span {
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+  }
+
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+  }
+
+  &::after {
+    content: "";
+    display: block;
+    height: 2px;
+    width: 100%;
+    background: currentColor;
+    position: absolute;
+    bottom: 0;
+  }
+
+  &.active::before {
+    top: 50%;
+    transform: translateY(-50%) rotate(45deg);
+  }
+
+  &.active span {
+    opacity: 0;
+  }
+
+  &.active::after {
+    bottom: 50%;
+    transform: translateY(50%) rotate(-45deg);
+  }
+}
+
+.menu {
+  position: fixed;
+  top: -150%;
+  right: 0;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  background: inherit;
+  transition:  0.5s;
+  visibility: hidden;
+
+  @media (min-width: $breakpoint-lg) {
+    width: 530px;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    gap: 40px;
+    top: 0;
+    background: inherit;
+    visibility: visible;
+    margin-left: auto;
+    transition:  0s;
+    z-index: 3;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    width: 567px;
+    gap: 50px;
+  }
+
+  &.active {
+    top: 50px;
+    overflow-y: scroll;
+    visibility: visible;
+  }
+}
+
+.item {
+  border-bottom: 1px solid #aaaaaa;
+
+  @media (min-width: $breakpoint-lg) {
+    border-bottom: none;
+  }
+
+  & button {
+    display: block;
+    padding: 23px 15px;
+    font-size: 24px;
+
+    @media (min-width: $breakpoint-lg) {
+      display: flex;
+      padding: 0px;
+      font-size: 20px;
+    }
+  }
+}
+
+.icon {
+  width: 100%;
+  height: 100%;
+  fill: currentColor;
+}

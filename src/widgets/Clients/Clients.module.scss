@@ -1,0 +1,57 @@
+@import '~shared/styles/breakpoints';
+
+.clients {
+  padding: 30px 15px;
+  //background-color: rgb(153, 153, 153); // TEST!!!
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 40px 15px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    padding: 50px 15px;
+  }
+}
+
+.brands {
+  display: grid;
+  gap: 30px;
+  grid-template-columns: repeat(2, 1fr);
+
+  @media (min-width: $breakpoint-md) {
+    width: 690px;
+    gap: 30px;
+    margin: 0 auto;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    width: 930px;
+    gap: 43px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    width: 1110px;
+    gap: 30px;
+    grid-template-columns: repeat(5, 1fr);
+  }
+}
+
+.brand {
+  width: 130px;
+  height: 47px;
+
+  @media (min-width: $breakpoint-md) {
+    width: 150px;
+    height: 54px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    width: 200px;
+    height: 72px;
+  }
+
+  &:nth-child(2n) {
+    justify-self: end;
+  }
+}

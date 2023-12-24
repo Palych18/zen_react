@@ -1,0 +1,90 @@
+@import '~shared/styles/breakpoints';
+
+.care {
+  padding: 30px 15px;
+
+  @media (min-width: $breakpoint-lg) {
+    padding: 40px 15px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    padding: 50px 15px;
+  }
+}
+
+.wrapper {
+  @media (min-width: $breakpoint-md) {
+    display: flex;
+    gap: 30px;
+    width: 690px;
+    margin: 30px auto 0;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    gap: 40px;
+    width: 930px;
+    margin: 40px auto 10px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    gap: 110px;
+    width: 1110px;
+    margin: 50px auto 20px;
+  }
+}
+
+.textBlock {
+  @media (min-width: $breakpoint-md) {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    flex: 1;
+  }
+}
+
+.title {
+  margin-bottom: 20px;
+  font-size: 26px;
+  font-weight: 700;
+
+  @media (min-width: $breakpoint-md) {
+    font-size: 30px;
+    margin-bottom: 10px;
+  }
+
+  @media (min-width: $breakpoint-lg) {
+    font-size: 34px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    font-size: 40px;
+  }
+}
+
+.text {
+  margin-top: 10px;
+  line-height: 20px;
+
+  @media (min-width: $breakpoint-lg) {
+    font-size: 18px;
+    line-height: 25px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    margin-top: 20px;
+    font-size: 20px;
+    line-height: 30px;
+  }
+}
+
+.image {
+  margin-top: 30px;
+  border: 1px solid #aaaaaa;
+  border-radius: 20px;
+  overflow: hidden;
+
+  @media (min-width: $breakpoint-md) {
+    margin-top: 0px;
+    flex: 1;
+  }
+}

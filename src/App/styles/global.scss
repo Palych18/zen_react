@@ -1,5 +1,29 @@
+@import 'shared/styles/breakpoints';
+
 .app {
   font-family: var(--font-family);
+
+  &.dark {
+  background: #484848;
+  color: #ffffff;
+}
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button {
+  color: inherit;
+}
+
+body {
+  padding-top: 50px;
+
+  @media (min-width: $breakpoint-lg) {
+    padding-top: 80px;
+  }
 }
 
 img {

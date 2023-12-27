@@ -15,7 +15,7 @@ export const Cashback = (props) => {
 
   const themeButton = getClassNames(
     classes.buttonOrderOpen,
-    { [classes.dark]: props.theme === 'dark' },
+    { [ classes.dark ]: props.theme === 'dark' },
   );
 
   const handleOpenOrderClick = () => {
@@ -23,19 +23,23 @@ export const Cashback = (props) => {
   };
 
   return (
-    <section className={classes.cashback}>
-      <div className={classes.wrapper}>
-        <div className={classes.textBlock}>
-          <h1 className={classes.title}>
-            {props.details.title.content}
+    <section className={ classes.cashback }>
+      <div className={ classes.wrapper }>
+        <div className={ classes.textBlock }>
+          <h1 className={ classes.title }>
+            { props.details.title.content }
           </h1>
-          {props.details.texts.map((text) => (
-            <p className={classes.text}>{text}</p>
-          ))}
+          { props.details.texts.map((text, index) => (
+            <p className={ classes.text }
+              key={ index }
+            >
+              { text }
+            </p>
+          )) }
           <button className={ themeButton }
-            onClick={handleOpenOrderClick}
+            onClick={ handleOpenOrderClick }
           >
-            {props.details.buttonText}
+            { props.details.buttonText }
           </button>
         </div>
       </div>

@@ -86,7 +86,9 @@ export const Header = (props) => {
         <nav className={ classes.nav }>
           <ul className={ menuClassName }>
             {props.details.nav.map((navItem) => (
-              <li className={ classes.item }>
+              <li className={ classes.item }
+                key={ navItem.target }
+              >
                 <button onClick={ handleMenuItemClick }>
                   { navItem.content }
                 </button>
@@ -102,7 +104,7 @@ export const Header = (props) => {
             onChange={ handleLangChange }
           >
             { props.details.langs.map((lang) => (
-              <option value={ lang.name }>
+              <option key={lang.key} value={ lang.name }>
                 { lang.name }
               </option>
             )) }

@@ -16,8 +16,10 @@ export const Clients = (props) => {
   return (
     <section className={ classes.clients }>
       <ul className={ classes.brands }>
-        { themeBrands.map((brand) => (
-          <li className={ classes.brand }>
+        { themeBrands.map((brand, index) => (
+          <li className={ classes.brand }
+            key={index}
+          >
             <img src={ brand.source }
               alt={ brand.description }
             />

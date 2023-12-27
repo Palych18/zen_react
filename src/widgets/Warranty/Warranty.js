@@ -19,8 +19,12 @@ export const Warranty = (props) => {
           <h2 className={classes.title}>
             {props.details.title.content}
           </h2>
-          {props.details.texts.map((text) => (
-            <p className={classes.text}>{text}</p>
+          {props.details.texts.map((text, index) => (
+            <p className={classes.text}
+              key={ index }
+            >
+              {text}
+            </p>
           ))}
         </div>
         <img className={classes.image}

@@ -19,8 +19,12 @@ export const Download = (props) => {
           <h1 className={ classes.title }>
             { props.details.title.content }
           </h1>
-          { props.details.texts.map((text) => (
-            <p className={ classes.text }>{ text }</p>
+          { props.details.texts.map((text, index) => (
+            <p className={ classes.text }
+              key={index}
+            >
+              { text }
+            </p>
           )) }
           <div className={ classes.links }>
             <a className={ classes.link }

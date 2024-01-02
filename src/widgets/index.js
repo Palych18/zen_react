@@ -4,3 +4,4 @@ export { Warranty } from './Warranty';
 export { Care } from './Care';
 export { Cashback } from './Cashback';
 export { Clients } from './Clients';
+export { Footer } from './Footer';

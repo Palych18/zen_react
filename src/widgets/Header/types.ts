@@ -1,32 +1,32 @@
-type Langs = {
+type Lang = {
   key: string;
   name: string;
 };
 
-type Nav = {
+type NavItem = {
   content: string;
   target: string;
   type: string;
 };
 
 type HeaderDetailsFromApi = {
-  langs: Langs[];
-  nav: Nav[];
+  langs: Lang[];
+  nav: NavItem[];
 };
 
-type ThemeDetails = {
+type ThemeState = {
   theme: string;
-  setTheme: (theme: string) => void;
+  toggleTheme: () => void;
 };
 
-type LangsDetails = {
-  langs: string;
-  setLangs: (langs: string) => void;
+type LangState = {
+  lang: string;
+  setLang: (lang: string) => void;
 };
 
 export type HeaderProps = {
   className?: string;
   details: HeaderDetailsFromApi;
-  langsDetails: LangsDetails;
-  themeDetails: ThemeDetails;
+  langState: LangState;
+  themeState: ThemeState;
 };

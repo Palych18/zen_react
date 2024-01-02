@@ -1,11 +1,8 @@
-import { useState } from 'react';
-import { getClassNames } from 'shared/utils';
 import classes from './Header.module.scss';
-import {
-  IconLogo,
-  IconMoon,
-  IconSun,
-} from 'shared/icons';
+import { useState } from 'react';
+import { getClassNames, scrollToTop } from 'shared/utils';
+import { scrollToTarget } from 'shared/utils';
+import { IconLogo, IconMoon, IconSun } from 'shared/icons';
 
 /**
  * @typedef {import('./types').HeaderProps} HeaderProps
@@ -18,109 +15,77 @@ import {
  */
 
 export const Header = (props) => {
-
-  const { theme, setTheme } = props.themeDetails;
-  const { langs, setLangs } = props.langsDetails;
-  const [ eventBurger, setActiveBurger ] = useState('noActive');
+  const { theme, toggleTheme } = props.themeState;
+  const { lang, setLang } = props.langState;
+  const [ isBurgerActive, setIsBurgerActive ] = useState(false);
 
   const headerClassNames = getClassNames(classes.header, {
     [ classes.dark ]: theme === 'dark',
   });
 
-  const handleLogoClick = () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth',
-    });
-  };
-
-  const handleMenuItemClick = () => {
-  };
-
-  /**
-  * @typedef {import('react').SyntheticEvent} Event
-  */
-
-  /**
-     * @function handleLangChange
-     * @param {Event & {target: HTMLSelectElement}} event
-     * @returns {void}
-  */
-
-  const handleLangChange = (event) => setLangs(event.target.value);
-
-  const handleThemeClick = () => {
-    const newTheme = theme === 'light'
-      ? 'dark'
-      : 'light';
-    setTheme(newTheme);
-  };
-
-  const handleBurgerClick = () => {
-    const newStateBurger = eventBurger === 'noActive'
-      ? 'active'
-      : 'noActive';
-    setActiveBurger(newStateBurger);
-  };
-
-  const menuClassName = getClassNames(classes.menu, {
-    [ classes.active ]: eventBurger === 'active',
+  const menuClassNames = getClassNames(classes.menu, {
+    [ classes.active ]: isBurgerActive,
     [ classes.dark ]: theme === 'dark',
   });
-  const burgerClassName = getClassNames(classes.burger, {
-    [ classes.active ]: eventBurger === 'active',
+
+  const burgerClassNames = getClassNames(classes.burger, {
+    [ classes.active ]: isBurgerActive,
   });
 
+  /** @type {(target: string) => void} */
+  const onNavItemClick = (target) => {
+    scrollToTarget(target);
+    setIsBurgerActive(false);
+  };
 
   return (
-    <header className={ headerClassNames }>
-      {/* wrapper */ }
-      <div className={ classes.wrapper }>
-        {/* logo */ }
-        <button className={ classes.logo }
-          onClick={ handleLogoClick }
+    <header className={headerClassNames}>
+      {/* wrapper */}
+      <div className={classes.wrapper}>
+        {/* logo */}
+        <button className={classes.logo}
+          onClick={() => scrollToTop()}
         >
-          <IconLogo className={ classes.icon } />
+          <IconLogo />
         </button>
-        {/* navigation */ }
-        <nav className={ classes.nav }>
-          <ul className={ menuClassName }>
+        {/* navigation */}
+        <nav className={classes.nav}>
+          <ul className={menuClassNames}>
             {props.details.nav.map((navItem) => (
-              <li className={ classes.item }
-                key={ navItem.target }
+              <li className={classes.item}
+                key={navItem.target}
               >
-                <button onClick={ handleMenuItemClick }>
-                  { navItem.content }
-                </button>
+                <a onClick={() => onNavItemClick(navItem.target)}
+                  href={`#${navItem.target}`}
+                >
+                  {navItem.content}
+                </a>
               </li>
             ))}
           </ul>
         </nav>
-        {/* actions */ }
-        <div className={ classes.actions }>
-          {/* lang */ }
-          <select className={ classes.lang }
-            value={ langs }
-            onChange={ handleLangChange }
+        {/* actions */}
+        <div className={classes.actions}>
+          {/* lang */}
+          <select className={classes.lang}
+            value={lang}
+            onChange={({ target: { value } }) => setLang(value)}
           >
-            { props.details.langs.map((lang) => (
-              <option key={lang.key} value={ lang.name }>
-                { lang.name }
+            {props.details.langs.map((lang) => (
+              <option key={lang.key} value={lang.name}>
+                {lang.name}
               </option>
-            )) }
+            ))}
           </select>
-          {/* theme */ }
-          <button className={ classes.theme }
-            onClick={ handleThemeClick }
+          {/* theme */}
+          <button className={classes.theme}
+            onClick={() => toggleTheme()}
           >
-            { theme === 'light'
-              ? <IconMoon className={ classes.icon } />
-              : <IconSun className={ classes.icon } />
-            }
+            {theme === 'light' ? <IconMoon /> : <IconSun />}
           </button>
-          {/* burger */ }
-          <button className={ burgerClassName }
-            onClick={ handleBurgerClick }
+          {/* burger */}
+          <button className={burgerClassNames}
+            onClick={() => setIsBurgerActive(!isBurgerActive)}
           >
             <span></span>
           </button>

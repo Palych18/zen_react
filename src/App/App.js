@@ -11,6 +11,7 @@ import {
   Care,
   Cashback,
   Clients,
+  Footer,
 } from 'widgets';
 
 /**
@@ -25,14 +26,22 @@ export const App = () => {
   const [ careDetails, setCareDetails ] = useState(null);
   const [ cashbackDetails, setCashbackDetails ] = useState(null);
   const [ clientsDetails, setClientsDetails ] = useState(null);
+  const [ footerDetails, setFooterDetails ] = useState(null);
   const [ theme, setTheme ] = useState('light');
-  const [ langs, setLangs ] = useState('EN');
+  const [ lang, setLang ] = useState('EN');
 
   const downloadSectionRef = useRef(null);
   const warrantySectionRef = useRef(null);
   const careSectionRef = useRef(null);
   const cashbackSectionRef = useRef(null);
   const clientsSectionRef = useRef(null);
+
+  const toggleTheme = () => {
+    const themeValue = theme === 'dark'
+      ? 'light'
+      : 'dark';
+    setTheme(themeValue);
+  };
 
   useEffect(() => {
     (async () => {
@@ -42,8 +51,8 @@ export const App = () => {
         const { en, ru } = data;
 
         let langApp;
-        if (langs === 'EN') langApp = en;
-        if (langs === 'RU') langApp = ru;
+        if (lang === 'EN') langApp = en;
+        if (lang === 'RU') langApp = ru;
 
         if (!data) throw new Error('No data!');
         setHeaderDetails(langApp.header);
@@ -52,48 +61,52 @@ export const App = () => {
         setCareDetails(langApp.care);
         setCashbackDetails(langApp.cashback);
         setClientsDetails(langApp.clients);
+        setFooterDetails(langApp.footer);
       } catch (error) {
         const /** @type {*} */ { message } = error;
         console.error(message);
       };
     })();
-  }, [ langs ]);
+  }, [ lang ]);
 
   return (
-    <div className={ `app ${theme}` }>
-      { headerDetails && (
-        <Header details={ headerDetails }
-          langsDetails={ { langs, setLangs } }
-          themeDetails={ { theme, setTheme } }
+    <div className={`app ${theme}`}>
+      {headerDetails && (
+        <Header details={headerDetails}
+          langState={{ lang, setLang }}
+          themeState={{ theme, toggleTheme }}
         />
-      ) }
-      { downloadDetails && (
+      )}
+      {downloadDetails && (
         <Download
-          details={ downloadDetails }
+          details={downloadDetails}
         />
-      ) }
-      { warrantyDetails && (
+      )}
+      {warrantyDetails && (
         <Warranty
-          details={ warrantyDetails }
+          details={warrantyDetails}
         />
-      ) }
-      { careDetails && (
+      )}
+      {careDetails && (
         <Care
-          details={ careDetails }
+          details={careDetails}
         />
-      ) }
+      )}
       {cashbackDetails && (
         <Cashback
           details={cashbackDetails}
           theme={theme}
         />
       )}
-      { clientsDetails && (
+      {clientsDetails && (
         <Clients
-          details={ clientsDetails }
-          theme={ theme }
+          details={clientsDetails}
+          theme={theme}
         />
-      ) }
+      )}
+      {footerDetails && (
+        <Footer details={footerDetails} />
+      )}
     </div>
   );
 };

@@ -1,18 +1,8 @@
 import './styles/index.scss';
-import {
-  useState,
-  useEffect,
-  useRef,
-} from 'react';
-import {
-  Header,
-  Download,
-  Warranty,
-  Care,
-  Cashback,
-  Clients,
-  Footer,
-} from 'widgets';
+import { useState, useEffect, useRef } from 'react';
+import { Header, Download, Warranty } from 'widgets';
+import { Care, Cashback, Clients } from 'widgets';
+import { Footer } from 'widgets';
 
 /**
  * @function App
@@ -28,7 +18,7 @@ export const App = () => {
   const [ clientsDetails, setClientsDetails ] = useState(null);
   const [ footerDetails, setFooterDetails ] = useState(null);
   const [ theme, setTheme ] = useState('light');
-  const [ lang, setLang ] = useState('EN');
+  const [ lang, setLang ] = useState('en');
 
   const downloadSectionRef = useRef(null);
   const warrantySectionRef = useRef(null);
@@ -48,20 +38,15 @@ export const App = () => {
       try {
         const response = await fetch('https://zen-npw-default-rtdb.firebaseio.com/.json');
         const data = await response.json();
-        const { en, ru } = data;
-
-        let langApp;
-        if (lang === 'EN') langApp = en;
-        if (lang === 'RU') langApp = ru;
 
         if (!data) throw new Error('No data!');
-        setHeaderDetails(langApp.header);
-        setDownloadDetails(langApp.download);
-        setWarrantyDetails(langApp.warranty);
-        setCareDetails(langApp.care);
-        setCashbackDetails(langApp.cashback);
-        setClientsDetails(langApp.clients);
-        setFooterDetails(langApp.footer);
+        setHeaderDetails(data[ lang ].header);
+        setDownloadDetails(data[ lang ].download);
+        setWarrantyDetails(data[ lang ].warranty);
+        setCareDetails(data[ lang ].care);
+        setCashbackDetails(data[ lang ].cashback);
+        setClientsDetails(data[ lang ].clients);
+        setFooterDetails(data[ lang ].footer);
       } catch (error) {
         const /** @type {*} */ { message } = error;
         console.error(message);

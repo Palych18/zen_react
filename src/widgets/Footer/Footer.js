@@ -1,8 +1,6 @@
 import classes from './Footer.module.scss';
-import {
-  IconLogoFooter,
-  IconDev,
-} from 'shared/icons';
+import { IconLogoFooter, IconDev } from 'shared/icons';
+import { scrollToTop } from 'shared/utils';
 
 /**
  * @typedef {import('./types').FooterProps} FooterProps
@@ -17,16 +15,18 @@ export const Footer = (props) => {
   const { details } = props;
 
   return (
-    <footer className={ classes.footer }>
-      <div className={ classes.wrapper }>
+    <footer className={classes.footer}>
+      <div className={classes.wrapper}>
         {/* columns */}
         <div className={classes.columns}>
         </div>
         {/* info */}
-        <div className={ classes.info }>
+        <div className={classes.info}>
           <div>
-            <IconLogoFooter className={ classes.logo } />
-            { details.texts.map((text, index) => (
+            <button onClick={() => scrollToTop()}>
+              <IconLogoFooter className={classes.logo} />
+            </button>
+            {details.texts.map((text, index) => (
               <p className={classes.text}
                 key={index}
               >
@@ -35,7 +35,7 @@ export const Footer = (props) => {
             ))}
           </div>
           <div className={classes.dev}>
-            <IconDev className={classes.developer}/>
+            <IconDev className={classes.developer} />
           </div>
         </div>
       </div>

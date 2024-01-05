@@ -1,7 +1,7 @@
 import classes from './Header.module.scss';
 import { useState } from 'react';
-import { getClassNames, scrollToTop } from 'shared/utils';
-import { scrollToTarget } from 'shared/utils';
+import { scrollToTop, scrollToTarget } from 'shared/utils';
+import { getClassNames } from 'shared/utils';
 import { IconLogo, IconMoon, IconSun } from 'shared/icons';
 
 /**
@@ -72,7 +72,7 @@ export const Header = (props) => {
             onChange={({ target: { value } }) => setLang(value)}
           >
             {props.details.langs.map((lang) => (
-              <option key={lang.key} value={lang.name}>
+              <option key={lang.key} value={lang.key}>
                 {lang.name}
               </option>
             ))}

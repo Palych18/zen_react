@@ -1,50 +1,39 @@
 /**
  * @function scrollToTarget
- * @param {*} target
- * @param {number} interval
- * @param {number} gap
+ * @param {Element | null} target
+ * @param {number} [duration]
  */
 
-export const scrollToTarget = (target, interval = 20, gap = 50) => {
-  const offset = window.scrollY + target.getBoundingClientRect().top;
-  const initialOffset = window.scrollY;
+export const scrollToTarget = (target, duration = 700) => {
+  let gap = 50;
+  const minWidth = 1152;
+  if (window.innerWidth >= minWidth) gap = 80;
 
-  const scrollHeight = offset - initialOffset;
+  if (target) {
+    const targetOffset = target.getBoundingClientRect().top + window.scrollY - gap;
+    const initialOffset = window.scrollY;
+    const distance = targetOffset - initialOffset;
+    const startTime = performance.now();
 
-  const scrollStep = Math.PI / interval;
-  const cosParametr = scrollHeight / 2;
-  let previousScrollMargin = 0;
-  let scrollCount = 0;
-  let scrollMargin = 0;
-  let signChanged = false;
+    /** @type {(timestamp: number) => void} */
+    const scrollAnimation = (timestamp) => {
+      const elapsed = timestamp - startTime;
+      const progress = Math.min(elapsed / duration, 1);
 
-  const scrollInterval = setInterval(() => {
-    if ((window.scrollY < offset - gap || window.scrollY > offset) && !signChanged) {
-      scrollCount += 1;
-      scrollMargin = cosParametr - cosParametr * Math.cos(scrollCount * scrollStep);
-
-      if (previousScrollMargin) {
-        signChanged = Math.abs(scrollMargin) < Math.abs(previousScrollMargin);
+      /** @type {(progress: number) => number} */
+      const ease = (progress) => {
+        return 0.5 - Math.cos(progress * Math.PI) / 2;
       };
 
-      window.scrollTo(0, initialOffset + scrollMargin - gap);
-      previousScrollMargin = scrollMargin;
-    } else {
-      clearInterval(scrollInterval);
-    }
-  }, 20);
+      window.scrollTo(0, initialOffset + distance * ease(progress));
+
+      if (progress < 1) {
+        window.requestAnimationFrame(scrollAnimation);
+      }
+    };
+
+    window.requestAnimationFrame(scrollAnimation);
+  } else {
+    console.error(`Секция не найдена!`);
+  }
 };
-
-// Получение смещения элемента: Сначала функция получает смещение(offset) элемента относительно верхней части страницы и возвращает позицию элемента на странице
-// initialOffset предоставляет информацию о текущем положении прокрутки страницы вверх или вниз относительно её начальной точки
-
-// Расчет высоты скролла: Затем вычисляется высота, на которую нужно прокрутить страницу, чтобы добраться до указанного элемента
-
-// Установка параметров прокрутки: Для плавности прокрутки используется метод интерполяции значений Math.cos,
-// который плавно изменяет прокручиваемую высоту от начальной до конечной точки.
-
-// Прокрутка страницы: Внутри интервальной функции(setInterval) происходит пошаговая прокрутка страницы к элементу.
-// Она продолжается до тех пор, пока текущая позиция прокрутки не достигнет смещения или его близких значений.
-
-// Остановка прокрутки: Как только страница доскролливается до необходимого места,
-// интервал прокрутки очищается(clearInterval), и прокрутка завершается.

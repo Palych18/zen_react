@@ -34,7 +34,8 @@ export const Header = (props) => {
 
   /** @type {(target: string) => void} */
   const onNavItemClick = (target) => {
-    scrollToTarget(target);
+    const targetId = document.getElementById(target);
+    scrollToTarget(targetId);
     setIsBurgerActive(false);
   };
 
@@ -55,9 +56,7 @@ export const Header = (props) => {
               <li className={classes.item}
                 key={navItem.target}
               >
-                <a onClick={() => onNavItemClick(navItem.target)}
-                  href={`#${navItem.target}`}
-                >
+                <a onClick={() => onNavItemClick(navItem.target)}>
                   {navItem.content}
                 </a>
               </li>

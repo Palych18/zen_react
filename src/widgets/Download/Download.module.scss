@@ -1,4 +1,4 @@
-@import '~shared/styles/breakpoints';
+@import "~shared/styles/breakpoints";
 
 .download {
   padding: 30px 15px;
@@ -10,109 +10,109 @@
   @media (min-width: $breakpoint-xl) {
     padding: 50px 15px;
   }
-}
 
-.wrapper {
-  @media (min-width: $breakpoint-md) {
-    display: flex;
-    gap: 30px;
-    width: 690px;
-    margin: 0 auto;
-  }
-
-  @media (min-width: $breakpoint-lg) {
-    gap: 40px;
-    width: 930px;
-    margin: 0 auto;
-  }
-
-  @media (min-width: $breakpoint-xl) {
-    gap: 110px;
-    width: 1110px;
-    margin: 0 auto;
-  }
-}
-
-.textBlock {
-  @media (min-width: $breakpoint-md) {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    flex: 1;
-  }
-}
-
-.title {
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 40px;
-
-  @media (min-width: $breakpoint-md) {
-    font-size: 36px;
-  }
-
-  @media (min-width: $breakpoint-lg) {
-    font-size: 42px;
-    line-height: 60px;
-  }
-
-  @media (min-width: $breakpoint-xl) {
-    font-size: 56px;
-    line-height: 75px;
-  }
-}
-
-.text {
-  margin-top: 10px;
-  line-height: 20px;
-
-  @media (min-width: $breakpoint-md) {
-    margin-top: 20px;
-  }
-
-  @media (min-width: $breakpoint-lg) {
-    font-size: 18px;
-    line-height: 25px;
-    margin-top: 20px;
-  }
-
-  @media (min-width: $breakpoint-xl) {
-    font-size: 20px;
-    line-height: 30px;
-  }
-}
-
-.links {
-  margin-top: 20px;
-
-  @media (min-width: $breakpoint-md) {
-    display: flex;
-  }
-}
-
-.link {
-  display: block;
-  width: 150px;
-  height: 44px;
-
-  &:last-child {
-    margin-top: 15px;
-
+  .wrapper {
     @media (min-width: $breakpoint-md) {
-      margin-top: 0;
-      margin-left: 20px;
+      display: flex;
+      gap: 30px;
+      width: 690px;
+      margin: 0 auto;
     }
-  }
-}
 
-.image {
-  margin-top: 30px;
-  border: 1px solid #aaaaaa;
-  border-radius: 20px;
-  overflow: hidden;
+    @media (min-width: $breakpoint-lg) {
+      gap: 40px;
+      width: 930px;
+      margin: 0 auto;
+    }
 
-  @media (min-width: $breakpoint-md) {
-    margin-top: 0px;
-    flex: 1;
+    @media (min-width: $breakpoint-xl) {
+      gap: 110px;
+      width: 1110px;
+      margin: 0 auto;
+    }
+
+    .textBlock {
+      @media (min-width: $breakpoint-md) {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        flex: 1;
+      }
+
+      .title {
+        font-size: 30px;
+        font-weight: 700;
+        line-height: 40px;
+
+        @media (min-width: $breakpoint-md) {
+          font-size: 36px;
+        }
+
+        @media (min-width: $breakpoint-lg) {
+          font-size: 42px;
+          line-height: 60px;
+        }
+
+        @media (min-width: $breakpoint-xl) {
+          font-size: 56px;
+          line-height: 75px;
+        }
+      }
+
+      .text {
+        margin-top: 10px;
+        line-height: 20px;
+
+        @media (min-width: $breakpoint-md) {
+          margin-top: 20px;
+        }
+
+        @media (min-width: $breakpoint-lg) {
+          font-size: 18px;
+          line-height: 25px;
+          margin-top: 20px;
+        }
+
+        @media (min-width: $breakpoint-xl) {
+          font-size: 20px;
+          line-height: 30px;
+        }
+      }
+
+      .links {
+        margin-top: 20px;
+
+        @media (min-width: $breakpoint-md) {
+          display: flex;
+        }
+
+        .link {
+          display: block;
+          width: 150px;
+          height: 44px;
+
+          &:last-child {
+            margin-top: 15px;
+
+            @media (min-width: $breakpoint-md) {
+              margin-top: 0;
+              margin-left: 20px;
+            }
+          }
+        }
+      }
+    }
+
+    .image {
+      margin-top: 30px;
+      border: 1px solid #aaaaaa;
+      border-radius: 20px;
+      overflow: hidden;
+
+      @media (min-width: $breakpoint-md) {
+        margin-top: 0px;
+        flex: 1;
+      }
+    }
   }
 }

@@ -109,7 +109,6 @@
           background: inherit;
           visibility: visible;
           margin-left: auto;
-          cursor: pointer;
           transition: 0s;
           z-index: 3;
         }
@@ -127,6 +126,7 @@
 
         .item {
           border-bottom: 1px solid #aaaaaa;
+          cursor: pointer;
 
           @media (min-width: $breakpoint-lg) {
             border-bottom: none;

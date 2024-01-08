@@ -23,23 +23,25 @@ export const Cashback = (props) => {
   };
 
   return (
-    <section className={ classes.cashback }>
-      <div className={ classes.wrapper }>
-        <div className={ classes.textBlock }>
-          <h1 className={ classes.title }>
-            { props.details.title.content }
+    <section className={classes.cashback}
+      id={props.details.name}
+    >
+      <div className={classes.wrapper}>
+        <div className={classes.textBlock}>
+          <h1 className={classes.title}>
+            {props.details.title.content}
           </h1>
-          { props.details.texts.map((text, index) => (
-            <p className={ classes.text }
-              key={ index }
+          {props.details.texts.map((text, index) => (
+            <p className={classes.text}
+              key={index}
             >
-              { text }
+              {text}
             </p>
-          )) }
-          <button className={ themeButton }
-            onClick={ handleOpenOrderClick }
+          ))}
+          <button className={themeButton}
+            onClick={handleOpenOrderClick}
           >
-            { props.details.buttonText }
+            {props.details.buttonText}
           </button>
         </div>
       </div>

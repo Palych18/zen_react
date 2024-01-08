@@ -13,7 +13,9 @@ import classes from './Warranty.module.scss';
 export const Warranty = (props) => {
 
   return (
-    <section className={classes.warranty}>
+    <section className={classes.warranty}
+      id={props.details.name}
+    >
       <div className={classes.wrapper}>
         <div className={classes.textBlock}>
           <h2 className={classes.title}>
@@ -21,7 +23,7 @@ export const Warranty = (props) => {
           </h2>
           {props.details.texts.map((text, index) => (
             <p className={classes.text}
-              key={ index }
+              key={index}
             >
               {text}
             </p>

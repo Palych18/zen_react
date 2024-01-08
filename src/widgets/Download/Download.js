@@ -14,7 +14,7 @@ export const Download = (props) => {
 
   return (
     <section className={classes.download}
-      id="download"
+      id={props.details.name}
     >
       <div className={classes.wrapper}>
         <div className={classes.textBlock}>

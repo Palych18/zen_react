@@ -23,13 +23,13 @@
   @media (min-width: $breakpoint-lg) {
     gap: 40px;
     width: 930px;
-    margin: 40px auto 10px;
+    margin: 0 auto;
   }
 
   @media (min-width: $breakpoint-xl) {
     gap: 110px;
     width: 1110px;
-    margin: 50px auto 20px;
+    margin: 0 auto;
   }
 }
 

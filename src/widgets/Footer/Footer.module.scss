@@ -5,6 +5,14 @@
   color: #ffffff;
   background-color: #484848;
 
+  @media (min-width: $breakpoint-lg) {
+    padding: 40px 15px;
+  }
+
+  @media (min-width: $breakpoint-xl) {
+    padding: 50px 15px;
+  }
+
   .wrapper {
     @media (min-width: $breakpoint-md) {
       width: 690px;
@@ -17,10 +25,6 @@
 
     @media (min-width: $breakpoint-xl) {
       width: 1110px;
-    }
-
-    & a {
-      color: #ffffff;
     }
 
     .columns {
@@ -39,8 +43,49 @@
         column-gap: 50px;
       }
 
-      @media (min-width: $breakpoint-lg) {
+      @media (min-width: $breakpoint-xl) {
         column-gap: 90px;
+      }
+
+      .title {
+        font-size: 16px;
+        font-weight: 700;
+
+        @media (min-width: $breakpoint-lg) {
+          font-size: 20px;
+        }
+      }
+
+      .links {
+        padding-top: 10px;
+
+        .item {
+          margin-top: 10px;
+
+          @media (min-width: $breakpoint-lg) {
+            margin-top: 15px;
+          }
+
+          @media (min-width: $breakpoint-lg) {
+            &:first-child {
+              margin-top: 10px;
+            }
+          }
+
+          a {
+            font-size: 14px;
+            font-weight: 400;
+
+            @media (min-width: $breakpoint-lg) {
+              font-size: 16px;
+            }
+          }
+
+          img {
+            width: 40px;
+            height: 40px;
+          }
+        }
       }
     }
 

@@ -2,7 +2,7 @@
 
 /_notes
 /_temp
-
+.env
 
 # dependencies
 /node_modules

@@ -1,4 +1,5 @@
 import classes from './Clients.module.scss';
+import { BrandList } from './BrandList';
 
 /**
  * @typedef {import('./types').ClientsProps} ClientsProps
@@ -11,23 +12,17 @@ import classes from './Clients.module.scss';
  */
 
 export const Clients = (props) => {
-  const themeBrands = props.theme === 'light' ? props.details.brands.light : props.details.brands.dark;
+  const themeBrands = props.theme === 'light'
+    ? props.details.brands.light
+    : props.details.brands.dark;
 
   return (
     <section className={classes.clients}
       id={props.details.name}
     >
-      <ul className={classes.brands}>
-        {themeBrands.map((brand, index) => (
-          <li className={classes.brand}
-            key={index}
-          >
-            <img src={brand.source}
-              alt={brand.description}
-            />
-          </li>
-        ))}
-      </ul>
+      <BrandList
+        brands={themeBrands}
+      />
     </section>
   );
 };

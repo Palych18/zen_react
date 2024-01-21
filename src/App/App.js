@@ -39,36 +39,36 @@ export const App = () => {
           themeState={{ theme, toggleTheme }}
         />
       )}
-      {/* {downloadDetails && (
+      {dataState.data?.download && (
         <Download
-          details={downloadDetails}
+          details={dataState.data.download}
         />
-      )} */}
-      {/* {warrantyDetails && (
+      )}
+      {dataState.data?.warranty && (
         <Warranty
-          details={warrantyDetails}
+          details={dataState.data.warranty}
         />
-      )} */}
-      {/* {careDetails && (
+      )}
+      {dataState.data?.care && (
         <Care
-          details={careDetails}
+          details={dataState.data.care}
         />
-      )} */}
-      {/* {cashbackDetails && (
+      )}
+      {dataState.data?.cashback && (
         <Cashback
-          details={cashbackDetails}
+          details={dataState.data.cashback}
           theme={theme}
         />
-      )} */}
-      {/* {clientsDetails && (
+      )}
+      {dataState.data?.clients && (
         <Clients
-          details={clientsDetails}
+          details={dataState.data.clients}
           theme={theme}
         />
-      )} */}
-      {/* {footerDetails && (
-        <Footer details={footerDetails} />
-      )} */}
+      )}
+      {dataState.data?.footer && (
+        <Footer details={dataState.data.footer} />
+      )}
     </div>
   );
 };

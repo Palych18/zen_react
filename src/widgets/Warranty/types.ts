@@ -1,19 +1,4 @@
-type Title = {
-  content: string;
-  priority: number;
-};
-
-type Image = {
-  description: string;
-  source: string;
-};
-
-type WarrantyDetailsFromAPI = {
-  name: string;
-  title: Title;
-  texts: string[];
-  image: Image;
-};
+import { WarrantyDetailsFromAPI } from 'shared/hooks/types';
 
 export type WarrantyProps = {
   className?: string;

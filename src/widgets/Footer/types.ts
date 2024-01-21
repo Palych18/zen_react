@@ -1,29 +1,4 @@
-type Link = {
-  content: string;
-  type: string;
-  url: string;
-};
-
-type Title = {
-  content: string;
-  priority: number;
-};
-
-type Column = {
-  links: Link[];
-  title: Title;
-};
-
-type Dev = {
-  type: string;
-  url: string;
-};
-
-type FooterDetailsFromAPI = {
-  columns: Column[];
-  developer: Dev;
-  texts: string[];
-};
+import { FooterDetailsFromAPI } from 'shared/hooks/types';
 
 export type FooterProps = {
   className?: string;

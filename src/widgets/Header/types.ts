@@ -1,32 +1,8 @@
-type Lang = {
-  key: string;
-  name: string;
-};
-
-type NavItem = {
-  content: string;
-  target: string;
-  type: string;
-};
-
-type HeaderDetailsFromApi = {
-  langs: Lang[];
-  nav: NavItem[];
-};
-
-type ThemeState = {
-  theme: string;
-  toggleTheme: () => void;
-};
-
-type LangState = {
-  lang: string;
-  setLang: (lang: string) => void;
-};
+import { HeaderDetailsFromAPI, LangState, ThemeState } from 'shared/hooks/types';
 
 export type HeaderProps = {
   className?: string;
-  details: HeaderDetailsFromApi;
+  details: HeaderDetailsFromAPI;
   langState: LangState;
   themeState: ThemeState;
 };

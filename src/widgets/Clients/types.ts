@@ -1,26 +1,7 @@
-type BrandDetails = {
-  description: string;
-  source: string;
-};
-
-type ThemeBrands = {
-  dark: BrandDetails[];
-  light: BrandDetails[];
-};
-
-type Title = {
-  content: string;
-  priority: number;
-};
-
-type ClientsDetails = {
-  brands: ThemeBrands;
-  title: Title;
-  name: string;
-};
+import { ClientsDetailsFromAPI } from 'shared/hooks/types';
 
 export type ClientsProps = {
-  className?: string,
-  details: ClientsDetails;
+  className?: string;
+  details: ClientsDetailsFromAPI;
   theme: string;
 };

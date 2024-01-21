@@ -1,14 +1,4 @@
-type Title = {
-  content: string;
-  priority: number;
-};
-
-type CashbackDetailsFromAPI = {
-  name: string;
-  title: Title;
-  texts: string[];
-  buttonText: string;
-};
+import {CashbackDetailsFromAPI} from 'shared/hooks/types';
 
 export type CashbackProps = {
   className?: string;

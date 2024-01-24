@@ -13,7 +13,7 @@ export type Image = {
 };
 
 /****************************************
-  LangState
+  DataState
 ****************************************/
 
 export type DataFromAPI = {
@@ -29,11 +29,6 @@ export type DataFromAPI = {
 export type DataState = {
   data: null | DataFromAPI;
   getData: (lang: string) => void;
-};
-
-export type LangState = {
-  lang: string;
-  setLang: (lang: string) => void;
 };
 
 export type DataStateCreator = (set: Function) => DataState;
@@ -61,6 +56,11 @@ export type HeaderDetailsFromAPI = {
 export type ThemeState = {
   theme: string;
   toggleTheme: () => void;
+};
+
+export type LangState = {
+  lang: string;
+  setLang: (lang: string) => void;
 };
 
 /****************************************
@@ -117,6 +117,15 @@ export type CashbackDetailsFromAPI = {
   title: Title;
   texts: string[];
   buttonText: string;
+};
+
+/****************************************
+  OrderState
+****************************************/
+
+export type OrderOpen = {
+  isOrderOpen: boolean;
+  setIsOrderOpen: (isOrderOpen: boolean) => void;
 };
 
 /****************************************

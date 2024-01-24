@@ -1,4 +1,4 @@
-import {CashbackDetailsFromAPI} from 'shared/hooks/types';
+import { CashbackDetailsFromAPI } from 'shared/hooks/types';
 
 export type CashbackProps = {
   className?: string;

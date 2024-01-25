@@ -6,7 +6,7 @@ import { API_BASE_URL } from '../config';
  * @typedef {import('./types').DataState} DataState
  */
 
-export const useData = create(/** @type {Creator} */ (set) => ({
+export const useData = create(/** @type {Creator} */(set) => ({
   data: null,
   getData: async (/** @type {string} */lang) => {
     const url = `${API_BASE_URL}/${lang}.json`;

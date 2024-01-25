@@ -1,7 +1,7 @@
 import classes from './Cashback.module.scss';
 import { getClassNames } from 'shared/utils';
+import { useOpenOrder } from 'shared/hooks';
 import { Order } from 'features/Order';
-import { useState } from 'react';
 
 /**
  * @typedef {import('./types').CashbackProps} CashbackProps
@@ -14,7 +14,7 @@ import { useState } from 'react';
  */
 
 export const Cashback = (props) => {
-  const [ isOrderOpen, setIsOrderOpen ] = useState(false);
+  const { isOrderOpen, setIsOrderOpen } = useOpenOrder();
 
   const themeButton = getClassNames(
     classes.buttonOrderOpen,

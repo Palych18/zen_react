@@ -1,6 +1,6 @@
 import './styles/index.scss';
 import { useState, useEffect } from 'react';
-import { useData } from 'shared/hooks';
+import { useData, useLang } from 'shared/hooks';
 import { Header, Download, Warranty } from 'widgets';
 import { Care, Cashback, Clients } from 'widgets';
 import { Footer } from 'widgets';
@@ -17,7 +17,7 @@ import { Footer } from 'widgets';
 
 export const App = () => {
   const dataState = useData();
-  const [ lang, setLang ] = useState('en');
+  const { lang, setLang } = useLang();
   const [ theme, setTheme ] = useState('light');
 
   const toggleTheme = () => {

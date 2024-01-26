@@ -73,9 +73,11 @@
         margin-top: 20px;
         font-size: 16px;
         background: inherit;
-        border: 1px solid #aaaaaa;
+        border: 1px solid #484848;
         border-radius: 30px;
-        cursor: pointer;
+        position: relative;
+        overflow-x: hidden;
+        transition: all .3s;
 
         @media (min-width: $breakpoint-md) {
           width: 225px;
@@ -85,6 +87,27 @@
         @media (min-width: $breakpoint-lg) {
           width: 243px;
           height: 55px;
+
+          &:after {
+            background: #484848;
+            border-radius: 30px;
+            content: "";
+            height: 100%;
+            left: -100%;
+            position: absolute;
+            top: 0;
+            transition: left .5s;
+            width: 100%;
+            z-index: -5;
+          }
+
+          &:hover:after {
+            left: 0;
+          }
+
+          &:hover {
+            color: #ffffff;
+          }
         }
 
         @media (min-width: $breakpoint-xl) {

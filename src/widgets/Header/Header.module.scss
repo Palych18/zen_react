@@ -66,7 +66,6 @@
       color: currentColor;
       background: inherit;
       z-index: 3;
-      cursor: pointer;
       align-items: center;
 
       @media (min-width: $breakpoint-lg) {
@@ -159,7 +158,6 @@
         height: 30px;
         background: inherit;
         color: currentColor;
-        cursor: pointer;
         align-items: center;
 
         @media (min-width: $breakpoint-lg) {
@@ -185,11 +183,11 @@
         background: inherit;
         border: 1px solid currentColor;
         border-radius: 4px;
-        cursor: pointer;
 
         @media (min-width: $breakpoint-lg) {
           width: 60px;
           height: 40px;
+          cursor: pointer;
         }
       }
 
@@ -200,7 +198,6 @@
         position: relative;
         background: inherit;
         color: currentColor;
-        cursor: pointer;
 
         @media (min-width: $breakpoint-lg) {
           display: none;

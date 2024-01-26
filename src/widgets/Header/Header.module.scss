@@ -183,11 +183,11 @@
         background: inherit;
         border: 1px solid currentColor;
         border-radius: 4px;
+        cursor: pointer;
 
         @media (min-width: $breakpoint-lg) {
           width: 60px;
           height: 40px;
-          cursor: pointer;
         }
       }
 

@@ -31,10 +31,7 @@ button {
   line-height: inherit;
   background: none;
   border: none;
-
-  @media (min-width: $breakpoint-lg) {
-    cursor: pointer;
-  }
+  cursor: pointer;
 
   &:focus {
     outline-color: var(--accent-color);

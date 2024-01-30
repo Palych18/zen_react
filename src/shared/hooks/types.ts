@@ -34,10 +34,32 @@ export type DataState = {
 export type DataStateCreator = (set: Function) => DataState;
 
 /****************************************
+  ThemeState
+****************************************/
+
+export type ThemeState = {
+  theme: string;
+  toggleTheme: () => void;
+};
+
+export type ThemeStateCreator = (set: Function) => ThemeState;
+
+/****************************************
+  LangState
+****************************************/
+
+export type LangState = {
+  lang: string;
+  setLang: (lang: string) => void;
+};
+
+export type LangStateCreator = (set: Function) => LangState;
+
+/****************************************
   HeaderState
 ****************************************/
 
-export type Lang = {
+export type LangFromAPI = {
   key: string;
   name: string;
 };
@@ -49,18 +71,8 @@ export type NavItem = {
 };
 
 export type HeaderDetailsFromAPI = {
-  langs: Lang[];
+  langs: LangFromAPI[];
   nav: NavItem[];
-};
-
-export type ThemeState = {
-  theme: string;
-  toggleTheme: () => void;
-};
-
-export type LangState = {
-  lang: string;
-  setLang: (lang: string) => void;
 };
 
 /****************************************

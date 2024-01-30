@@ -1,4 +1,5 @@
 import classes from './Care.module.scss';
+import { useData } from 'shared/hooks/useData';
 
 /**
  * @typedef {import('./types').CareProps} CareProps
@@ -7,21 +8,22 @@ import classes from './Care.module.scss';
 /**
  * @function Care
  * @param {CareProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Care = (props) => {
+  const dataState = useData();
 
   return (
     <section className={classes.care}
-      id={props.details.name}
+      id={dataState.data?.care.name}
     >
       <div className={classes.wrapper}>
         <div className={classes.textBlock}>
           <h1 className={classes.title}>
-            {props.details.title.content}
+            {dataState.data?.care.title.content}
           </h1>
-          {props.details.texts.map((text, index) => (
+          {dataState.data?.care.texts.map((text, index) => (
             <p className={classes.text}
               key={index}
             >
@@ -30,8 +32,8 @@ export const Care = (props) => {
           ))}
         </div>
         <img className={classes.image}
-          src={props.details.image.source}
-          alt={props.details.image.description}
+          src={dataState.data?.care.image.source}
+          alt={dataState.data?.care.image.description}
         />
       </div>
     </section>

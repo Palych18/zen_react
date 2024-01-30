@@ -1,4 +1,5 @@
 import classes from './Warranty.module.scss';
+import { useData } from 'shared/hooks/useData';
 
 /**
  * @typedef {import('./types').WarrantyProps} WarrantyProps
@@ -7,21 +8,22 @@ import classes from './Warranty.module.scss';
 /**
  * @function Warranty
  * @param {WarrantyProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Warranty = (props) => {
+  const dataState = useData();
 
   return (
     <section className={classes.warranty}
-      id={props.details.name}
+      id={dataState.data?.warranty.name}
     >
       <div className={classes.wrapper}>
         <div className={classes.textBlock}>
           <h2 className={classes.title}>
-            {props.details.title.content}
+            {dataState.data?.warranty.title.content}
           </h2>
-          {props.details.texts.map((text, index) => (
+          {dataState.data?.warranty.texts.map((text, index) => (
             <p className={classes.text}
               key={index}
             >
@@ -30,8 +32,8 @@ export const Warranty = (props) => {
           ))}
         </div>
         <img className={classes.image}
-          src={props.details.image.source}
-          alt={props.details.image.description}
+          src={dataState.data?.warranty.image.source}
+          alt={dataState.data?.warranty.image.description}
         />
       </div>
     </section>

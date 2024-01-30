@@ -17,28 +17,16 @@ import { Footer } from 'widgets';
 
 export const App = () => {
   const dataState = useData();
-  const { lang, setLang } = useLang();
-  const { theme, setTheme } = useTheme();
-
-  const toggleTheme = () => {
-    const themeValue = theme === 'dark'
-      ? 'light'
-      : 'dark';
-    setTheme(themeValue);
-  };
+  const langState = useLang();
+  const themeState = useTheme();
 
   useEffect(() => {
-    dataState.getData(lang);
-  }, [ lang ]);
+    dataState.getData(langState.lang);
+  }, [ langState.lang ]);
 
   return (
-    <div className={`app ${theme}`}>
-      {dataState.data?.header && (
-        <Header details={dataState.data.header}
-          langState={{ lang, setLang }}
-          themeState={{ theme, toggleTheme }}
-        />
-      )}
+    <div className={`app ${themeState.theme}`}>
+      <Header />
       {dataState.data?.download && (
         <Download
           details={dataState.data.download}
@@ -57,13 +45,13 @@ export const App = () => {
       {dataState.data?.cashback && (
         <Cashback
           details={dataState.data.cashback}
-          theme={theme}
+          theme={themeState.theme}
         />
       )}
       {dataState.data?.clients && (
         <Clients
           details={dataState.data.clients}
-          theme={theme}
+          theme={themeState.theme}
         />
       )}
       {dataState.data?.footer && (

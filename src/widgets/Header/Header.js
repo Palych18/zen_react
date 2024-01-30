@@ -1,5 +1,6 @@
 import classes from './Header.module.scss';
 import { useState } from 'react';
+import { useData, useLang, useTheme } from 'shared/hooks';
 import { scrollToTop, scrollToTarget } from 'shared/utils';
 import { getClassNames } from 'shared/utils';
 import { IconLogo, IconMoon, IconSun } from 'shared/icons';
@@ -11,21 +12,23 @@ import { IconLogo, IconMoon, IconSun } from 'shared/icons';
 /**
  * @function Header
  * @param {HeaderProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Header = (props) => {
-  const { theme, toggleTheme } = props.themeState;
-  const { lang, setLang } = props.langState;
+  const dataState = useData();
+  const langState = useLang();
+  const themeState = useTheme();
+
   const [ isBurgerActive, setIsBurgerActive ] = useState(false);
 
   const headerClassNames = getClassNames(classes.header, {
-    [ classes.dark ]: theme === 'dark',
+    [ classes.dark ]: themeState.theme === 'dark',
   });
 
   const menuClassNames = getClassNames(classes.menu, {
     [ classes.active ]: isBurgerActive,
-    [ classes.dark ]: theme === 'dark',
+    [ classes.dark ]: themeState.theme === 'dark',
   });
 
   const burgerClassNames = getClassNames(classes.burger, {
@@ -38,6 +41,8 @@ export const Header = (props) => {
     scrollToTarget(targetId);
     setIsBurgerActive(false);
   };
+
+  if (!dataState.data) return null;
 
   return (
     <header className={headerClassNames}>
@@ -52,7 +57,7 @@ export const Header = (props) => {
         {/* navigation */}
         <nav className={classes.nav}>
           <ul className={menuClassNames}>
-            {props.details.nav.map((navItem) => (
+            {dataState.data.header.nav.map((navItem) => (
               <li className={classes.item}
                 key={navItem.target}
               >
@@ -67,10 +72,10 @@ export const Header = (props) => {
         <div className={classes.actions}>
           {/* lang */}
           <select className={classes.lang}
-            value={lang}
-            onChange={({ target: { value } }) => setLang(value)}
+            value={langState.lang}
+            onChange={({ target: { value } }) => langState.setLang(value)}
           >
-            {props.details.langs.map((lang) => (
+            {dataState.data.header.langs.map((lang) => (
               <option key={lang.key} value={lang.key}>
                 {lang.name}
               </option>
@@ -78,9 +83,9 @@ export const Header = (props) => {
           </select>
           {/* theme */}
           <button className={classes.theme}
-            onClick={() => toggleTheme()}
+            onClick={() => themeState.toggleTheme()}
           >
-            {theme === 'light' ? <IconMoon /> : <IconSun />}
+            {themeState.theme === 'light' ? <IconMoon /> : <IconSun />}
           </button>
           {/* burger */}
           <button className={burgerClassNames}

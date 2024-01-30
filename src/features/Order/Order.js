@@ -1,27 +1,23 @@
 import { useState } from 'react';
+import { useOpenOrder } from 'shared/hooks';
 import { getClassNames } from 'shared/utils/index';
 import classes from './Order.module.scss';
 
 /**
- * @typedef {import('./types').OrderProps} OrderProps
- */
-
-/**
  * @function Order
- * @param {OrderProps} props
- * @returns
+ * @returns {JSX.Element}
  */
 
-export const Order = (props) => {
+export const Order = () => {
+  const orderstate = useOpenOrder();
+
   const [ privacyChecked, setPrivacyChecked ] = useState(true);
   const handlePrivacyChange = () => {
     setPrivacyChecked(!privacyChecked);
   };
 
-  const { isOrderOpen, setIsOrderOpen } = props.orderOpen;
-
   const openOrder = getClassNames(classes.order, {
-    [ classes.active ]: isOrderOpen,
+    [ classes.active ]: orderstate.isOrderOpen,
   });
 
   return (
@@ -29,7 +25,7 @@ export const Order = (props) => {
       <div className={classes.orderModal}>
         <div className={classes.orderReset}>
           <button className={classes.buttonReset}
-            onClick={() => setIsOrderOpen(!isOrderOpen)}
+            onClick={() => orderstate.setIsOrderOpen(!orderstate.isOrderOpen)}
           >
           </button>
         </div>

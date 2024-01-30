@@ -1,6 +1,11 @@
 import { create } from 'zustand';
 
-export const useOpenOrder = create((set) => ({
+/**
+ * @typedef {import('./types').OrderOpenState} OrderOpenState
+ * @typedef {import('./types').OrderOpenStateCreator} Creator
+ */
+
+export const useOpenOrder = create(/** @type {Creator} */ (set) => ({
   isOrderOpen: false,
-  setIsOrderOpen: (/** @type {boolean} */ isOpen) => set({ isOrderOpen: isOpen }),
+  setIsOrderOpen: (isOpen) => set({ isOrderOpen: isOpen }),
 }));

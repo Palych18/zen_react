@@ -1,6 +1,6 @@
 import classes from './Download.module.scss';
 
-import { useData } from 'shared/hooks/useData';
+import { useData } from 'shared/hooks';
 
 /**
  * @typedef {import('./types').DownloadProps} DownloadProps

@@ -1,6 +1,6 @@
 import classes from './Cashback.module.scss';
 import { getClassNames } from 'shared/utils';
-import { useOpenOrder } from 'shared/hooks';
+import { useData, useTheme, useOpenOrder } from 'shared/hooks';
 import { Order } from 'features/Order';
 
 /**
@@ -10,29 +10,31 @@ import { Order } from 'features/Order';
 /**
  *  @function Cashback
  * @param {CashbackProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Cashback = (props) => {
-  const { isOrderOpen, setIsOrderOpen } = useOpenOrder();
+  const dataState = useData();
+  const themeState = useTheme();
+  const orderState = useOpenOrder();
 
   const themeButton = getClassNames(
     classes.buttonOrderOpen,
-    { [ classes.dark ]: props.theme === 'dark' },
+    { [ classes.dark ]: themeState.theme === 'dark' },
   );
 
   return (
     <>
       {/* Cashback */}
       <section className={classes.cashback}
-        id={props.details.name}
+        id={dataState.data?.cashback.name}
       >
         <div className={classes.wrapper}>
           <div className={classes.textBlock}>
             <h1 className={classes.title}>
-              {props.details.title.content}
+              {dataState.data?.cashback.title.content}
             </h1>
-            {props.details.texts.map((text, index) => (
+            {dataState.data?.cashback.texts.map((text, index) => (
               <p className={classes.text}
                 key={index}
               >
@@ -40,17 +42,15 @@ export const Cashback = (props) => {
               </p>
             ))}
             <button className={themeButton}
-              onClick={() => setIsOrderOpen(!isOrderOpen)}
+              onClick={() => orderState.setIsOrderOpen(!orderState.isOrderOpen)}
             >
-              {props.details.buttonText}
+              {dataState.data?.cashback.buttonText}
             </button>
           </div>
         </div>
       </section>
       {/* Order */}
-      {<Order
-        orderOpen={{ isOrderOpen, setIsOrderOpen }}
-      />}
+      <Order />
     </>
   );
 };

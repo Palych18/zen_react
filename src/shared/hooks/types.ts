@@ -135,10 +135,12 @@ export type CashbackDetailsFromAPI = {
   OrderState
 ****************************************/
 
-export type OrderOpen = {
+export type OrderOpenState = {
   isOrderOpen: boolean;
   setIsOrderOpen: (isOrderOpen: boolean) => void;
 };
+
+export type OrderOpenStateCreator = (set: Function) => OrderOpenState;
 
 /****************************************
   ClientsState

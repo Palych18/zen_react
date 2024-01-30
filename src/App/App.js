@@ -30,12 +30,7 @@ export const App = () => {
       <Download />
       <Warranty />
       <Care />
-      {dataState.data?.cashback && (
-        <Cashback
-          details={dataState.data.cashback}
-          theme={themeState.theme}
-        />
-      )}
+      <Cashback />
       {dataState.data?.clients && (
         <Clients
           details={dataState.data.clients}

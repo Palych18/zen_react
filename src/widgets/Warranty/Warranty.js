@@ -1,5 +1,5 @@
 import classes from './Warranty.module.scss';
-import { useData } from 'shared/hooks/useData';
+import { useData } from 'shared/hooks';
 
 /**
  * @typedef {import('./types').WarrantyProps} WarrantyProps

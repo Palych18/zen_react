@@ -1,5 +1,7 @@
 import classes from './Download.module.scss';
 
+import { useData } from 'shared/hooks/useData';
+
 /**
  * @typedef {import('./types').DownloadProps} DownloadProps
  */
@@ -7,21 +9,22 @@ import classes from './Download.module.scss';
 /**
  * @function Download
  * @param {DownloadProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Download = (props) => {
+  const dataState = useData();
 
   return (
     <section className={classes.download}
-      id={props.details.name}
+      id={dataState.data?.download.name}
     >
       <div className={classes.wrapper}>
         <div className={classes.textBlock}>
           <h1 className={classes.title}>
-            {props.details.title.content}
+            {dataState.data?.download.title.content}
           </h1>
-          {props.details.texts.map((text, index) => (
+          {dataState.data?.download.texts.map((text, index) => (
             <p className={classes.text}
               key={index}
             >
@@ -30,24 +33,24 @@ export const Download = (props) => {
           ))}
           <div className={classes.links}>
             <a className={classes.link}
-              href={props.details.links.apple.url}
+              href={dataState.data?.download.links.apple.url}
             >
-              <img src={props.details.links.apple.icon}
+              <img src={dataState.data?.download.links.apple.icon}
                 alt="Apple"
               />
             </a>
             <a className={classes.link}
-              href={props.details.links.google.url}
+              href={dataState.data?.download.links.google.url}
             >
-              <img src={props.details.links.google.icon}
+              <img src={dataState.data?.download.links.google.icon}
                 alt="Google"
               />
             </a>
           </div>
         </div>
         <img className={classes.image}
-          src={props.details.image.source}
-          alt={props.details.image.description}
+          src={dataState.data?.download.image.source}
+          alt={dataState.data?.download.image.description}
         />
       </div>
     </section>

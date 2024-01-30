@@ -27,11 +27,7 @@ export const App = () => {
   return (
     <div className={`app ${themeState.theme}`}>
       <Header />
-      {dataState.data?.download && (
-        <Download
-          details={dataState.data.download}
-        />
-      )}
+      <Download />
       {dataState.data?.warranty && (
         <Warranty
           details={dataState.data.warranty}

@@ -78,6 +78,7 @@
         position: relative;
         overflow-x: hidden;
         transition: all .3s;
+        z-index: 1;
 
         @media (min-width: $breakpoint-md) {
           width: 225px;
@@ -98,15 +99,27 @@
             top: 0;
             transition: left .5s;
             width: 100%;
-            z-index: -5;
+            z-index: -1;
+          }
+
+          &:hover {
+            color: #ffffff;
+            z-index: 2;
           }
 
           &:hover:after {
             left: 0;
           }
 
-          &:hover {
-            color: #ffffff;
+          &.dark {
+            &:after {
+              background: #ffffff;
+            }
+
+            &:hover {
+              color: #484848;
+              z-index: 2;
+            }
           }
         }
 

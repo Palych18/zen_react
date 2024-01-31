@@ -1,4 +1,5 @@
 import classes from './Clients.module.scss';
+import { useData } from 'shared/hooks';
 import { BrandList } from './BrandList';
 
 /**
@@ -8,21 +9,17 @@ import { BrandList } from './BrandList';
 /**
  * @function Clients
  * @param {ClientsProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Clients = (props) => {
-  const themeBrands = props.theme === 'light'
-    ? props.details.brands.light
-    : props.details.brands.dark;
+  const dataState = useData();
 
   return (
     <section className={classes.clients}
-      id={props.details.name}
+      id={dataState.data?.clients.name}
     >
-      <BrandList
-        brands={themeBrands}
-      />
+      <BrandList />
     </section>
   );
 };

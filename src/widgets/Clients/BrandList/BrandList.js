@@ -1,19 +1,22 @@
 import classes from './BrandList.module.scss';
-
-/**
- * @typedef {import('./types').BrandListProps} BrandListProps
- */
+import { useData, useTheme } from 'shared/hooks';
 
 /**
  * @function BrandList
- * @param {BrandListProps} props
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
-export const BrandList = (props) => {
+export const BrandList = () => {
+  const dataState = useData();
+  const themeState = useTheme();
+
+  const themeBrands = themeState.theme === 'light'
+    ? dataState.data?.clients.brands.light
+    : dataState.data?.clients.brands.dark;
+
   return (
     <ul className={classes.brands}>
-      {props.brands.map((brand) => (
+      {themeBrands && themeBrands.map((brand) => (
         <li className={classes.brand}
           key={brand.source}
         >

@@ -1,4 +1,5 @@
 import classes from './Footer.module.scss';
+import { useData } from 'shared/hooks';
 import { IconLogoFooter, IconDev } from 'shared/icons';
 import { scrollToTop } from 'shared/utils';
 
@@ -13,13 +14,14 @@ import { scrollToTop } from 'shared/utils';
  */
 
 export const Footer = (props) => {
+  const dataState = useData();
 
   return (
     <footer className={classes.footer}>
       <div className={classes.wrapper}>
         {/* columns */}
         <div className={classes.columns}>
-          {props.details.columns.map((column, columnIndex) => (
+          {dataState.data?.footer.columns.map((column, columnIndex) => (
             <div key={columnIndex}>
               <h3 className={classes.title}>{column.title.content}</h3>
               <div className={classes.links}>
@@ -56,7 +58,7 @@ export const Footer = (props) => {
             <button onClick={() => scrollToTop()}>
               <IconLogoFooter className={classes.logo} />
             </button>
-            {props.details.texts.map((text, index) => (
+            {dataState.data?.footer.texts.map((text, index) => (
               <p className={classes.text}
                 key={index}
               >

@@ -32,9 +32,7 @@ export const App = () => {
       <Care />
       <Cashback />
       <Clients />
-      {dataState.data?.footer && (
-        <Footer details={dataState.data.footer} />
-      )}
+      <Footer />
     </div>
   );
 };

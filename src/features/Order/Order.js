@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { useOpenOrder } from 'shared/hooks';
+import { useOrder } from 'shared/hooks';
 import { getClassNames } from 'shared/utils/index';
 import classes from './Order.module.scss';
 
@@ -9,7 +9,7 @@ import classes from './Order.module.scss';
  */
 
 export const Order = () => {
-  const orderstate = useOpenOrder();
+  const orderstate = useOrder();
 
   const [ privacyChecked, setPrivacyChecked ] = useState(true);
   const handlePrivacyChange = () => {

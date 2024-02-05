@@ -6,16 +6,11 @@ import { getClassNames } from 'shared/utils';
 import { IconLogo, IconMoon, IconSun } from 'shared/icons';
 
 /**
- * @typedef {import('./types').HeaderProps} HeaderProps
- */
-
-/**
  * @function Header
- * @param {HeaderProps} props
  * @returns {null | JSX.Element}
  */
 
-export const Header = (props) => {
+export const Header = () => {
   const dataState = useData();
   const langState = useLang();
   const themeState = useTheme();

@@ -1,22 +1,17 @@
 import classes from './Cashback.module.scss';
 import { getClassNames } from 'shared/utils';
-import { useData, useTheme, useOpenOrder } from 'shared/hooks';
+import { useData, useTheme, useOrder } from 'shared/hooks';
 import { Order } from 'features/Order';
 
 /**
- * @typedef {import('./types').CashbackProps} CashbackProps
- */
-
-/**
  *  @function Cashback
- * @param {CashbackProps} props
  * @returns {null | JSX.Element}
  */
 
-export const Cashback = (props) => {
+export const Cashback = () => {
   const dataState = useData();
   const themeState = useTheme();
-  const orderState = useOpenOrder();
+  const orderState = useOrder();
 
   const themeButton = getClassNames(
     classes.buttonOrderOpen,
@@ -29,11 +24,15 @@ export const Cashback = (props) => {
       <section className={classes.cashback}
         id={dataState.data?.cashback.name}
       >
+        {/* Wrapper */}
         <div className={classes.wrapper}>
+          {/* TextBlock */}
           <div className={classes.textBlock}>
+            {/* Title */}
             <h1 className={classes.title}>
               {dataState.data?.cashback.title.content}
             </h1>
+            {/* Texts */}
             {dataState.data?.cashback.texts.map((text, index) => (
               <p className={classes.text}
                 key={index}
@@ -41,6 +40,7 @@ export const Cashback = (props) => {
                 {text}
               </p>
             ))}
+            {/* ButtonOrder */}
             <button className={themeButton}
               onClick={() => orderState.setIsOrderOpen(!orderState.isOrderOpen)}
             >

@@ -3,16 +3,11 @@ import { useData } from 'shared/hooks';
 import { BrandList } from './BrandList';
 
 /**
- * @typedef {import('./types').ClientsProps} ClientsProps
- */
-
-/**
  * @function Clients
- * @param {ClientsProps} props
  * @returns {null | JSX.Element}
  */
 
-export const Clients = (props) => {
+export const Clients = () => {
   const dataState = useData();
 
   return (

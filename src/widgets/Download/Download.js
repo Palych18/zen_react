@@ -1,29 +1,27 @@
 import classes from './Download.module.scss';
-
 import { useData } from 'shared/hooks';
 
 /**
- * @typedef {import('./types').DownloadProps} DownloadProps
- */
-
-/**
  * @function Download
- * @param {DownloadProps} props
  * @returns {null | JSX.Element}
  */
 
-export const Download = (props) => {
+export const Download = () => {
   const dataState = useData();
 
   return (
     <section className={classes.download}
       id={dataState.data?.download.name}
     >
+      {/* Wrapper */}
       <div className={classes.wrapper}>
+        {/* TextBlock */}
         <div className={classes.textBlock}>
+          {/* Title */}
           <h1 className={classes.title}>
             {dataState.data?.download.title.content}
           </h1>
+          {/* Texts */}
           {dataState.data?.download.texts.map((text, index) => (
             <p className={classes.text}
               key={index}
@@ -31,6 +29,7 @@ export const Download = (props) => {
               {text}
             </p>
           ))}
+          {/* Links */}
           <div className={classes.links}>
             <a className={classes.link}
               href={dataState.data?.download.links.apple.url}
@@ -48,10 +47,13 @@ export const Download = (props) => {
             </a>
           </div>
         </div>
-        <img className={classes.image}
-          src={dataState.data?.download.image.source}
-          alt={dataState.data?.download.image.description}
-        />
+        {/* PreviewBlock */}
+        <button className={classes.preview}>
+          <img
+            src={dataState.data?.download.image.source}
+            alt={dataState.data?.download.image.description}
+          />
+        </button>
       </div>
     </section>
   );

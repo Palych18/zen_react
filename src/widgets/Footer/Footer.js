@@ -4,26 +4,24 @@ import { IconLogoFooter, IconDev } from 'shared/icons';
 import { scrollToTop } from 'shared/utils';
 
 /**
- * @typedef {import('./types').FooterProps} FooterProps
- */
-
-/**
  * @function Footer
- * @param {FooterProps} props
  * @returns {JSX.Element}
  */
 
-export const Footer = (props) => {
+export const Footer = () => {
   const dataState = useData();
 
   return (
     <footer className={classes.footer}>
+      {/* Wrapper */}
       <div className={classes.wrapper}>
-        {/* columns */}
+        {/* Columns */}
         <div className={classes.columns}>
           {dataState.data?.footer.columns.map((column, columnIndex) => (
             <div key={columnIndex}>
+              {/* TitleColumn */}
               <h3 className={classes.title}>{column.title.content}</h3>
+              {/* LinksColumn */}
               <div className={classes.links}>
                 {column.links.map((link, linkIndex) => (
                   <div className={classes.item}
@@ -52,12 +50,14 @@ export const Footer = (props) => {
             </div>
           ))}
         </div>
-        {/* info */}
+        {/* Info */}
         <div className={classes.info}>
           <div>
+            {/* Logo */}
             <button onClick={() => scrollToTop()}>
               <IconLogoFooter className={classes.logo} />
             </button>
+            {/* Texts */}
             {dataState.data?.footer.texts.map((text, index) => (
               <p className={classes.text}
                 key={index}
@@ -66,6 +66,7 @@ export const Footer = (props) => {
               </p>
             ))}
           </div>
+          {/* IconDev */}
           <div className={classes.dev}>
             <IconDev className={classes.developer} />
           </div>

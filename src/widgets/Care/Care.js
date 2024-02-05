@@ -2,27 +2,26 @@ import classes from './Care.module.scss';
 import { useData } from 'shared/hooks';
 
 /**
- * @typedef {import('./types').CareProps} CareProps
- */
-
-/**
  * @function Care
- * @param {CareProps} props
  * @returns {null | JSX.Element}
  */
 
-export const Care = (props) => {
+export const Care = () => {
   const dataState = useData();
 
   return (
     <section className={classes.care}
       id={dataState.data?.care.name}
     >
+      {/* Wrapper */}
       <div className={classes.wrapper}>
+        {/* TextBlock */}
         <div className={classes.textBlock}>
+          {/* Title */}
           <h1 className={classes.title}>
             {dataState.data?.care.title.content}
           </h1>
+          {/* Texts */}
           {dataState.data?.care.texts.map((text, index) => (
             <p className={classes.text}
               key={index}
@@ -31,10 +30,13 @@ export const Care = (props) => {
             </p>
           ))}
         </div>
-        <img className={classes.image}
-          src={dataState.data?.care.image.source}
-          alt={dataState.data?.care.image.description}
-        />
+        {/* PreviewBlock */}
+        <button className={classes.preview}>
+          <img
+            src={dataState.data?.care.image.source}
+            alt={dataState.data?.care.image.description}
+          />
+        </button>
       </div>
     </section>
   );

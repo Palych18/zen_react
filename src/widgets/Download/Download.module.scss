@@ -103,7 +103,8 @@
       }
     }
 
-    .image {
+    .preview {
+      display: flex;
       margin-top: 30px;
       border: 1px solid #aaaaaa;
       border-radius: 20px;
@@ -112,6 +113,19 @@
       @media (min-width: $breakpoint-md) {
         margin-top: 0px;
         flex: 1;
+      }
+
+      @media (min-width: $breakpoint-lg) {
+        &:hover {
+          cursor: zoom-in;
+          img {
+            transform: scale(1.02);
+          }
+        }
+
+        img {
+          transition: all 0.5s;
+        }
       }
     }
   }

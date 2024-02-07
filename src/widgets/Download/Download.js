@@ -9,6 +9,8 @@ import { useData } from 'shared/hooks';
 export const Download = () => {
   const dataState = useData();
 
+  if (!dataState.data?.download) return null;
+
   return (
     <section className={classes.download}
       id={dataState.data?.download.name}

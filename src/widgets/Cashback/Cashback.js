@@ -13,6 +13,8 @@ export const Cashback = () => {
   const themeState = useTheme();
   const orderState = useOrder();
 
+  if (!dataState.data?.cashback) return null;
+
   const themeButton = getClassNames(
     classes.buttonOrderOpen,
     { [ classes.dark ]: themeState.theme === 'dark' },

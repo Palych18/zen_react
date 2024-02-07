@@ -9,6 +9,8 @@ import { useData } from 'shared/hooks';
 export const Care = () => {
   const dataState = useData();
 
+  if (!dataState.data?.care) return null;
+
   return (
     <section className={classes.care}
       id={dataState.data?.care.name}

@@ -5,11 +5,13 @@ import { scrollToTop } from 'shared/utils';
 
 /**
  * @function Footer
- * @returns {JSX.Element}
+ * @returns {null | JSX.Element}
  */
 
 export const Footer = () => {
   const dataState = useData();
+
+  if (!dataState.data?.footer) return null;
 
   return (
     <footer className={classes.footer}>

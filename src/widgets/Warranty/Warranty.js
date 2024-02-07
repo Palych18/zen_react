@@ -9,6 +9,8 @@ import { useData } from 'shared/hooks';
 export const Warranty = () => {
   const dataState = useData();
 
+  if (!dataState.data?.warranty) return null;
+
   return (
     <section className={classes.warranty}
       id={dataState.data?.warranty.name}

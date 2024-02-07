@@ -10,6 +10,8 @@ import { BrandList } from './BrandList';
 export const Clients = () => {
   const dataState = useData();
 
+  if (!dataState.data?.clients) return null;
+
   return (
     <section className={classes.clients}
       id={dataState.data?.clients.name}

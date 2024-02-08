@@ -27,10 +27,13 @@ export type DataFromAPI = {
 };
 
 export type DataState = {
+  isDataLoading: boolean;
   data: null | DataFromAPI;
+  dataErrorMessage: string;
   getData: (lang: string) => void;
 };
 
+export type DataSetterCallback = (state: DataState) => DataState;
 export type DataStateCreator = (set: Function) => DataState;
 
 /****************************************

@@ -15,8 +15,6 @@ export const Header = () => {
   const langState = useLang();
   const themeState = useTheme();
 
-  if (!dataState.data?.header) return null;
-
   const [ isBurgerActive, setIsBurgerActive ] = useState(false);
 
   const headerClassNames = getClassNames(classes.header, {

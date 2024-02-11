@@ -3,6 +3,7 @@ import { useEffect } from 'react';
 import { useData, useLang, useTheme } from 'shared/hooks';
 import { Header, Download, Warranty } from 'widgets';
 import { Care, Cashback, Clients } from 'widgets';
+import { ProgressBar } from 'features';
 import { Footer } from 'widgets';
 
 /**
@@ -26,6 +27,7 @@ export const App = () => {
 
   return (
     <div className={`app ${themeState.theme}`}>
+      <ProgressBar />
       <Header />
       <Download />
       <Warranty />

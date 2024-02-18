@@ -146,6 +146,17 @@ export type OrderOpenState = {
 export type OrderOpenStateCreator = (set: Function) => OrderOpenState;
 
 /****************************************
+  SliderState
+****************************************/
+
+export type SliderOpenState = {
+  isSliderOpen: boolean;
+  setIsSliderOpen: (isOrderOpen: boolean) => void;
+};
+
+export type SliderOpenStateCreator = (set: Function) => SliderOpenState;
+
+/****************************************
   ClientsState
 ****************************************/
 

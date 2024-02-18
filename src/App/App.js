@@ -3,8 +3,8 @@ import { useEffect } from 'react';
 import { useData, useLang, useTheme } from 'shared/hooks';
 import { Header, Download, Warranty } from 'widgets';
 import { Care, Cashback, Clients } from 'widgets';
-import { ProgressBar } from 'features';
 import { Footer } from 'widgets';
+import { ProgressBar, Slider } from 'features';
 
 /**
  * @typedef {import('./types').DataFromAPI} DataFromAPI
@@ -35,6 +35,7 @@ export const App = () => {
       <Cashback />
       <Clients />
       <Footer />
+      <Slider />
     </div>
   );
 };

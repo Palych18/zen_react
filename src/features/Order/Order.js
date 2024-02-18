@@ -9,7 +9,7 @@ import classes from './Order.module.scss';
  */
 
 export const Order = () => {
-  const orderstate = useOrder();
+  const orderState = useOrder();
 
   const [ privacyChecked, setPrivacyChecked ] = useState(true);
   const handlePrivacyChange = () => {
@@ -17,20 +17,25 @@ export const Order = () => {
   };
 
   const openOrder = getClassNames(classes.order, {
-    [ classes.active ]: orderstate.isOrderOpen,
+    [ classes.active ]: orderState.isOrderOpen,
   });
 
   return (
     <section className={openOrder}>
+      {/* Order modal */}
       <div className={classes.orderModal}>
+        {/* Order reset */}
         <div className={classes.orderReset}>
           <button className={classes.buttonReset}
-            onClick={() => orderstate.setIsOrderOpen(!orderstate.isOrderOpen)}
+            onClick={() => orderState.setIsOrderOpen(!orderState.isOrderOpen)}
           >
           </button>
         </div>
+        {/* Modal */}
         <div className={classes.modal}>
+          {/* Title */}
           <h3 className={classes.title}>Order a consultation</h3>
+          {/* Form */}
           <form className={classes.form}>
             <label className={classes.field}>
               <input id="name" type="text" placeholder="Name" />

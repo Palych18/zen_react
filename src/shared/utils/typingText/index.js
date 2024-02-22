@@ -1,0 +1,1 @@
+export { typingText } from './typingText';

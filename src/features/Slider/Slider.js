@@ -1,17 +1,7 @@
 import classes from './Slider.module.scss';
+import { useRef, useState, useEffect } from 'react';
 import { useData, useSlider } from 'shared/hooks';
 import { getClassNames } from 'shared/utils/index';
-
-/**
- * @function typingText
- * @param {string} text
- * @returns
- */
-const typingText = (text) => {
-
-
-  return text;
-};
 
 /**
  * @function Slider
@@ -19,32 +9,75 @@ const typingText = (text) => {
  */
 
 export const Slider = () => {
+  const sliderRef = useRef(null);
+  const slidesRef = useRef(null);
+
   const sliderState = useSlider();
   const dataState = useData();
-  if (!dataState.data) return null;
 
-  const openSlider = getClassNames(classes.modalSlider, {
-    [ classes.active ]: sliderState.isSliderOpen,
+  const [direction, setDirection] = useState(0);
+
+  useEffect(() => {
+    const /** @type {*} */ slides = slidesRef.current;
+    if (!slides) return;
+    if (direction === 0) {
+      slides.style.left = '0';
+    }
+    if (direction > 0) {
+      slides.style.left = `-${direction * 300}px`;
+    }
+  }, [direction]);
+
+  const sliderClassNames = getClassNames(classes.modalSlider, {
+    [classes.active]: sliderState.isSliderOpen,
   });
 
-  const textDescription = dataState.data.care.image.description;
+  const handlePrevClick = () => {
+    setDirection(direction - 1);
+  };
+
+  const handleNextClick = () => {
+    setDirection(direction + 1);
+  };
+
+  if (!dataState.data) return null;
 
   return (
-    <div className={openSlider}>
-      <p>{typingText(textDescription)}</p>
-      <div className={classes.slider}>
-        <div className={classes.sliderClose}>
-          <button className={classes.buttonClose}
-            onClick={() => sliderState.setIsSliderOpen(!sliderState.isSliderOpen)}
+    <div className={sliderClassNames}
+      ref={sliderRef}
+    >
+      <div className={classes.wrapper}>
+        {/* close */}
+        <button className={classes.close}
+          onClick={() => sliderState.setIsSliderOpen(!sliderState.isSliderOpen)}
+        >
+          X
+        </button>
+        {/* buttons */}
+        <div className={classes.buttons}>
+          {/* prev */}
+          <button className={classes.button}
+            onClick={handlePrevClick}
           >
+            {'<'}
+          </button>
+          {/* next */}
+          <button className={classes.button}
+            onClick={handleNextClick}
+          >
+            {'>'}
           </button>
         </div>
-        <img src={dataState.data.care.image.source}/>
-        <div className={classes.sliderSelect}>
-          <button className={classes.buttonPrev}>{'<'}</button>
-          <button className={classes.buttonNext}>{'>'}</button>
+        {/* slides */}
+        <div className={classes.slides}
+          ref={slidesRef}
+        >
+          <div className={classes.slide}><img src={dataState.data.download.image.source}/></div>
+          <div className={classes.slide}><img src={dataState.data.warranty.image.source}/></div>
+          <div className={classes.slide}><img src={dataState.data.care.image.source}/></div>
         </div>
-        <p className={classes.sliderPagination}>3/3</p>
+        {/* counter */}
+        <p className={classes.counter}>3/3</p>
       </div>
     </div>
   );
